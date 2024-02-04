@@ -25,7 +25,7 @@
       <div class="card roomdisplayCardInfo mb-2" v-for="(items, key) in roomData" :key="key" >
         <div class="g-0 roomFlexReg">
           <div class="d-flex justify-content-center ">
-            <div  id="room1" class="carousel slide d-flex justify-content-center" >
+            <div  :id="items.title" class="carousel slide d-flex justify-content-center" >
               <div class="carousel-inner">
                 <div class="displayRoomImg">
                   <div class="carousel-item" v-for="(img, index) in items.img" :key="index" :class="{active:index===0?true:false}" >
@@ -34,10 +34,10 @@
                 </div>
               </div>
               <div>
-                <button class="carousel-control-prev btn btn-primary ms-3" type="button" data-bs-target="#room1" data-bs-slide="prev">
+                <button class="carousel-control-prev btn btn-primary ms-3" type="button" :data-bs-target="'#' + items.title" data-bs-slide="prev">
                   <img src="../assets/room/icon/ic_arrow left.svg" alt="" srcset="">
                 </button>
-                <button class="carousel-control-next me-3" type="button" data-bs-target="#room1" data-bs-slide="next">
+                <button class="carousel-control-next me-3" type="button" :data-bs-target="'#' + items.title" data-bs-slide="next">
                   <img src="../assets/room/icon/ic_arrow Right.svg" alt="">
                   <span class="visually-hidden">Next</span>
                 </button>
@@ -93,14 +93,16 @@
     price:string
   }
   const getImg = (name:string)=>{
-    return new URL(name, import.meta.url).href;
+    // return new URL(name, import.meta.url).href;
+    return new URL(`../assets/room/pc/${name}.png`, import.meta.url).href;
   }
   const roomData:Room[]=reactive([{
-    img:[`../assets/room/pc/room2-1.png`,
-    '../assets/room/pc/room2-2.png',
-    '../assets/room/pc/room2-3.png',
-    '../assets/room/pc/room2-4.png',
-    '../assets/room/pc/room2-5.png'],
+    // img:[`../assets/room/pc/room2-1.png`,
+    // '../assets/room/pc/room2-2.png',
+    // '../assets/room/pc/room2-3.png',
+    // '../assets/room/pc/room2-4.png',
+    // '../assets/room/pc/room2-5.png'],
+    img:[ 'room2-1', 'room2-1', 'room2-2', 'room2-3', 'room2-4','room2-5'],
     title:'尊爵雙人房',
     contentTitle:'享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。',
     size:'24坪',
@@ -203,7 +205,7 @@
   }
   
   .roomdisplayInfo{
-    max-width:1294px;
+    max-width:88vw;
   }
   .roomdisplayCardInfo{
     border-radius: 20px;

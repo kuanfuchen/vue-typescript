@@ -1,9 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg backgroundtrans" >
     <div class="container-fluid navBarContainer">
-      <a class="navbar-brand" href="/">
-        <img :src="Imglogo" alt="" />
-      </a>
+      <RouterLink class="navbar-brand" to="/"><img :src="Imglogo" alt="" /></RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <img :src="Imgmenu" />
       </button>
