@@ -44,7 +44,7 @@ import axios from 'axios'
 import { RouterLink } from 'vue-router';
 import { ref,reactive } from 'vue';
 import Navbar from '../components/Navbar.vue';
-import {data} from '../utils/utils.ts';
+import {data} from '../utils/utils';
 type UserLoginInfo = {
   email:string,
   password:string,

@@ -26,6 +26,7 @@
   import { Subject, takeUntil } from 'rxjs';
   const comSubject$ = new Subject();
   import { reactive } from 'vue'; 
+  import {data} from '../utils/utils'
   type Person = {
     name:string,
     status:boolean,
@@ -36,7 +37,7 @@
     status:false,
     token:''
   }); 
-  import {data} from '../utils/utils';
+  
   data.transferMeg$.pipe(takeUntil(comSubject$)).subscribe((info:any)=>{
     console.log(info,'info')
     if(info.status){
