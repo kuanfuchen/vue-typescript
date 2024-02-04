@@ -97,12 +97,7 @@
     return new URL(`../assets/room/pc/${name}.png`, import.meta.url).href;
   }
   const roomData:Room[]=reactive([{
-    // img:[`../assets/room/pc/room2-1.png`,
-    // '../assets/room/pc/room2-2.png',
-    // '../assets/room/pc/room2-3.png',
-    // '../assets/room/pc/room2-4.png',
-    // '../assets/room/pc/room2-5.png'],
-    img:[ 'room2-1', 'room2-1', 'room2-2', 'room2-3', 'room2-4','room2-5'],
+    img:[ 'room2-1', 'room2-2', 'room2-3', 'room2-4','room2-5'],
     title:'尊爵雙人房',
     contentTitle:'享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。',
     size:'24坪',
@@ -110,11 +105,7 @@
     person:'2-4人',
     price:'NT$ 10,000'
   },{
-    img:[`../assets/room/pc/room3-1.png`,
-    '../assets/room/pc/room3-2.png',
-    '../assets/room/pc/room3-3.png',
-    '../assets/room/pc/room3-4.png',
-    '../assets/room/pc/room3-5.png'],
+    img:['room3-1', 'room3-2', 'room3-3', 'room3-4','room3-5'],
     title:'景觀雙人房',
     contentTitle:'景觀雙人房擁有絕美的高雄市景觀，讓您在舒適的環境中欣賞城市之美。',
     size:'28坪',
@@ -122,11 +113,7 @@
     person:'2-4人',
     price:'NT$ 10,000'
   },{
-    img:[`../assets/room/pc/room4-1.png`,
-    '../assets/room/pc/room4-2.png',
-    '../assets/room/pc/room4-3.png',
-    '../assets/room/pc/room4-4.png',
-    '../assets/room/pc/room4-5.png'],
+    img:['room4-1', 'room4-2', 'room4-3', 'room4-4','room4-5'],
     title:'豪華雅緻房',
     contentTitle:'享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。',
     size:'36坪',
@@ -134,11 +121,7 @@
     person:'2-4人',
     price:'NT$ 20,000'
   },{
-    img:[`../assets/room/pc/room5-1.png`,
-    '../assets/room/pc/room5-2.png',
-    '../assets/room/pc/room5-3.png',
-    '../assets/room/pc/room5-4.png',
-    '../assets/room/pc/room5-5.png'],
+    img:['room5-1', 'room5-2', 'room5-3', 'room5-4','room5-5'],
     title:'景觀尊榮家庭房',
     contentTitle:'景觀尊榮家庭房不僅有寬敞的空間，還有絕美的市景視野，是帶給家庭最尊榮的待遇。',
     size:'48坪',
@@ -299,6 +282,9 @@
   }
   .card_btn_gradientLine{
     width:90vw
+  }
+  .roomdisplayInfo{
+    max-width:99vw;
   }
 }
 </style>

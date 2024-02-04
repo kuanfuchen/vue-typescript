@@ -19,13 +19,13 @@
               <input type="password" class="form-control loginTextStyle loginFormInput" id="inputPassward" v-model="loginUseInfo.password" />
             </div>
             <div class="d-flex justify-content-between mb-4">
-              <div class=" form-check">
+              <!-- <div class=" form-check">
                 <input type="checkbox" class="form-check-input" id="checkedbox" v-model="saveAccount" />
                 <label class="form-check-label" for="checkedbox">紀錄帳號</label>
               </div>
               <div class="loginForgetPW loginTextStyle">
                 忘記密碼?
-              </div>
+              </div> -->
             </div>
             <button type="submit" class="mb-1 form-control btn loginTextStyle loginFormInput loginFormButton"
             @click="loginedInfo()">會員登入</button>
@@ -44,6 +44,7 @@ import axios from 'axios'
 import { RouterLink } from 'vue-router';
 import { ref,reactive } from 'vue';
 import Navbar from '../components/Navbar.vue';
+import {data} from '../utils/utils.ts';
 type UserLoginInfo = {
   email:string,
   password:string,
@@ -53,7 +54,6 @@ const loginUseInfo:UserLoginInfo = reactive({
   password:''
 });
 const signupwarning = ref('')
-const saveAccount = ref(false);
 const loginedInfo = async() => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const checkedEmail = loginUseInfo.email.toLowerCase().match(emailRegex);
@@ -70,6 +70,11 @@ const loginedInfo = async() => {
     email: loginUseInfo.email,
     password: loginUseInfo.password
   }).then((res)=>{
+    if(res.data.status){
+      console.log(res)
+      window.confirm('登入成功')
+      data.transferMegFinishMeg$(res.data);
+    }
     console.log(res,'res')
   }).catch((err)=>{
     signupwarning.value ='帳號或密碼有誤,20秒後此行消失'

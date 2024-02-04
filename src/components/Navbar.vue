@@ -5,16 +5,14 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <img :src="Imgmenu" />
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center" >
+      <div class="collapse navbar-collapse ms-auto justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
           <li class="nav-item me-3" >
             <RouterLink class='nav-link navLinkTextStyle' to="/roomstyle" style="color:#fff" >客房旅宿</RouterLink>
           </li>
           <li class="nav-item me-3" >
-            <RouterLink class='nav-link navLinkTextStyle' to="/login" style="color:#fff">會員登入</RouterLink>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="navButtonStyle navLinkTextStyle">立即訂房</button>
+            <RouterLink class='nav-link navLinkTextStyle' v-if="!loginPersonInfo.status" to="/login" style="color:#fff">會員登入</RouterLink>
+            <div v-else style="color:#fff" class="navLinkTextStyle">{{ loginPersonInfo.name }}</div>
           </li>
         </ul>
       </div>
@@ -24,8 +22,34 @@
 <script setup lang="ts">
   import { RouterLink } from 'vue-router';
   import Imglogo from '../assets/footer/LOGO.png';
-  import Imgmenu from '../assets/ic_menu.png'
-
+  import Imgmenu from '../assets/ic_menu.png';
+  import { Subject, takeUntil } from 'rxjs';
+  const comSubject$ = new Subject();
+  import { reactive } from 'vue'; 
+  type Person = {
+    name:string,
+    status:boolean,
+    token:string
+  } 
+  const loginPersonInfo:Person =reactive({
+    name:'',
+    status:false,
+    token:''
+  }); 
+  import {data} from '../utils/utils';
+  data.transferMeg$.pipe(takeUntil(comSubject$)).subscribe((info:any)=>{
+    console.log(info,'info')
+    if(info.status){
+      loginPersonInfo.name = info.result.name;
+      loginPersonInfo.status = info.status;
+      loginPersonInfo.token = info.token;
+    }
+  })
+  const removeInfo = () => {
+    loginPersonInfo.name = '';
+    loginPersonInfo.status=false;
+    loginPersonInfo.token = '';
+  }
 </script>
 <style scope>
   .navbar{
@@ -54,6 +78,9 @@
 }
 .backgroundtrans{
   background-color: transparent !important;
+}
+.navbar-collapse .collapse .show{
+  background-color: #000 !important;
 }
 @media(max-width:576px){
   .navbar .navBarContainer{

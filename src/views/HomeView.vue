@@ -7,7 +7,7 @@
           <div class="bannerTextGroup-i indextextFlex-i">
             <div class="bannerText1-i title_textContent-i">
               <div class="bannerTextColor-i bannerTextStyle-i roomTextSize1-i">享樂酒店</div>
-              <div class="bannerTextStyle-i c roomTextSize2-i bannerTextColor-i">Enjoyment Luxury Hotel</div>
+              <div class="bannerTextStyle-i c roomTextSize2-i bannerTextColor-i" >Enjoyment Luxury Hotel</div>
               <div class="banner-gradientLine-i"></div>
             </div>
             <div class="frosted_glass-i d-flex align-items-center">

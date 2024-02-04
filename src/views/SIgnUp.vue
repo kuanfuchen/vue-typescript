@@ -35,11 +35,12 @@
                 </div>
                 <div class="mb-3">
                   <label for="inputPassward" class="form-label">密碼</label>
-                  <input type="password" class="form-control loginTextStyle loginFormInput" id="inputPassward" v-model="signupPW" />
+                  <input type="password" class="form-control loginTextStyle loginFormInput" id="inputPassward"
+                    placeholder="需要8碼以上，並需要字母與數字混合" v-model="signupPW" />
                 </div>
                 <div class="mb-3 mt-2">
-                  <label for="inputPassward" class="form-label">再次確認密碼</label>
-                  <input type="password" class="form-control loginTextStyle loginFormInput" id="inputPassward" v-model="reCheckedPW" />
+                  <label for="inputPassward2" class="form-label">再次確認密碼</label>
+                  <input type="password" class="form-control loginTextStyle loginFormInput" id="inputPassward2" v-model="reCheckedPW" />
                 </div>
                 <button type="submit" class="mt-3 mb-1 form-control btn loginTextStyle loginFormInput loginFormButton"
                 @click="checkedSignUp()">下一步</button>
@@ -108,7 +109,9 @@
             </div>
         </div>
       </div>
+
     </div>
+
 </template>
 <script setup lang="ts">
   import { RouterLink } from 'vue-router';
@@ -204,8 +207,14 @@
         "detail": userInfo.addressDes}
     }).then((res)=>{
       console.log(res,'res')
-      router.push({path:'/login'});
-    }).catch((err)=>console.error(err,'err'))
+      if(res.data?.status){
+        window.confirm('註冊完成,轉入登入頁面');
+        setTimeout(()=>{router.push({path:'/login'}), 5000})
+      }
+    }).catch((err)=>{
+      window.confirm('註冊失敗');
+      console.error(err,'err')
+    })
     
 
   }
