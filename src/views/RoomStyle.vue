@@ -44,6 +44,7 @@
               </div>
             </div>
           </div>
+          <div style="min-width:27vw">
           <div class="card-body my-auto">
             <div class="mx-auto" style="height: 100%;">
               <h5 class="bannerTextStyle roomTextSize1" >{{ items.title }}</h5>
@@ -73,6 +74,9 @@
               </button>
             </div>
           </div>
+            
+          </div>
+          
         </div>
       </div>
     </div>
