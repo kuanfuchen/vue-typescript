@@ -1,12 +1,13 @@
 <template>
-  <nav class="navbar navbar-expand-lg backgroundtrans" >
-    <div class="container-fluid navBarContainer">
+  <nav class="navbar navbar-expand-lg backgroundtrans" :class="{'mobileNavBar':toggleMenu?true:false}" >
+    <div class="container-fluid mb-auto">
       <RouterLink class="navbar-brand" to="/"><img :src="Imglogo" alt="" /></RouterLink>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+      @click="toggleMenu = !toggleMenu">
         <img :src="Imgmenu" />
       </button>
       <div class="collapse navbar-collapse ms-auto justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center ">
           <li class="nav-item me-3" >
             <RouterLink class='nav-link navLinkTextStyle' to="/roomstyle" style="color:#fff" >客房旅宿</RouterLink>
           </li>
@@ -18,6 +19,10 @@
       </div>
     </div>
   </nav>
+
+
+
+
 </template>
 <script setup lang="ts">
   import { RouterLink } from 'vue-router';
@@ -25,8 +30,9 @@
   import Imgmenu from '../assets/ic_menu.png';
   import { Subject, takeUntil } from 'rxjs';
   const comSubject$ = new Subject();
-  import { reactive } from 'vue'; 
-  import {data} from '../utils/utils'
+  import { reactive,ref } from 'vue'; 
+  import {data} from '../utils/utils';
+  const toggleMenu = ref(false);
   type Person = {
     name:string,
     status:boolean,
@@ -56,6 +62,7 @@
   .navbar{
     height:120px;
 }
+
 .nav-item .navLinkTextStyle{
   font-size: 16px;
   font-family: 'Noto Serif TC';
@@ -88,6 +95,12 @@
     padding-left: 12px;
     padding-right: 12px;
   }
+  .mobileNavBar{
+    height:100vh;
+    background: #000 !important;
+    z-index: 100;
+  }
+
 }
 
 </style>
