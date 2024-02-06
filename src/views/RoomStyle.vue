@@ -51,7 +51,7 @@
               <div class="roomTextSize3">{{ items.contentTitle }}</div>
             </div>
             <div class="roomInfoBtnStyle">
-              <button class="roomBtn roomTextSize3 mt-5">
+              <button class="roomBtn roomTextSize3 mt-5 ">
                 <img class="ms-0" src="../assets/room/icon/ic_Size.png" alt="" srcset="">
                 <p class="mt-2">{{ items.size }}</p>
               </button>
@@ -192,9 +192,10 @@
   }
   
   .roomdisplayInfo{
-    max-width:88vw;
+    max-width:70vw;
   }
   .roomdisplayCardInfo{
+    width:70vw;
     border-radius: 20px;
     border: 1px solid #fff;
   }
@@ -228,12 +229,18 @@
   }
   .img-style{
     border-radius: 20px 0  0 20px;
-    max-width:61vw;
-    object-fit: contain;
+    max-width:41vw;
+    /* height: 480px; */
+   
   }
   .roomInfoBtnStyle{
     display: flex;
     justify-content: start;
+  }
+  @media(max-width:1200px){
+    .roomTextSize3{
+      font-size: 12px;
+    }
   }
   @media(max-width:576px){
     .bannerBg{
@@ -273,7 +280,8 @@
     margin-bottom: 40px;
   }
   .roomFlexReg{
-    display:block
+    display:block;
+    /* width: 80vw; */
   }
   .img-style{
     border-radius: 20px 20px 0 0;
@@ -288,7 +296,12 @@
     width:90vw
   }
   .roomdisplayInfo{
-    max-width:99vw;
+    max-width:100vw;
+  }
+  .roomdisplayCardInfo{
+    width: 100vw;
+    margin-left: 0;
+    padding-left: 0;
   }
 }
 </style>
