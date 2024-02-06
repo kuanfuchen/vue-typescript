@@ -22,9 +22,10 @@
         <div class="bannerTextStyle roomTextSize2">房型選擇</div>
         <div class="bannerTextStyle roomTitle roomTextSize1" >各種房型，任您挑選</div>
       </div>
-      <div class="card roomdisplayCardInfo mb-2" v-for="(items, key) in roomData" :key="key" >
+      <div class="card roomdisplayCardInfo mx-auto mb-2" v-for="(items, key) in roomData" :key="key" >
         <div class="g-0 roomFlexReg">
-          <div class="d-flex justify-content-center ">
+          <!-- <div class=" "> -->
+            <!--  justify-content-center -->
             <div  :id="items.title" class="carousel slide d-flex justify-content-center" >
               <div class="carousel-inner">
                 <div class="displayRoomImg">
@@ -43,7 +44,7 @@
                 </button>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
           <div style="min-width:27vw">
           <div class="card-body my-auto">
             <div class="mx-auto" style="height: 100%;">
@@ -231,7 +232,6 @@
     border-radius: 20px 0  0 20px;
     max-width:41vw;
     /* height: 480px; */
-   
   }
   .roomInfoBtnStyle{
     display: flex;
@@ -284,8 +284,8 @@
     /* width: 80vw; */
   }
   .img-style{
-    border-radius: 20px 20px 0 0;
-    max-width:99vw;
+    border-radius: 0;
+    min-width:99vw;
     height: 100%;
     object-fit: contain;
   }
@@ -299,9 +299,7 @@
     max-width:100vw;
   }
   .roomdisplayCardInfo{
-    width: 100vw;
-    margin-left: 0;
-    padding-left: 0;
+    min-width: calc(100vw - 20px);
   }
 }
 </style>
