@@ -50,9 +50,9 @@
               <div class="" v-else-if="stepper=== 'stepperTwo'">
                 <div class="mb-2">
                   <label for="name" class="form-label">姓名</label>
-                  <input type="text" v-model="userInfo.name" class="form-control loginTextStyle loginFormInput" id="name" placeholder='請輸入姓名' />
+                      <input type="text" v-model="userInfo.name" class="form-control loginTextStyle loginFormInput" id="name" placeholder='請輸入姓名' />
                 </div>
-                <div class="mb-2">
+                <div class="mb-2 " >
                   <label for="inputTEL" class="form-label">手機</label>
                   <input type="text" v-model="userInfo.tel" class="form-control loginTextStyle loginFormInput" id="inputTEL" placeholder="請輸入手機號碼"/>
                 </div>
@@ -60,17 +60,17 @@
                   <label>生日</label>
                 </div>
                 <div class="row row-cols-3 mx-0 mb-2">
-                  <div class="col">
+                  <div class="col ps-0">
                     <select class="form-select loginTextStyle loginFormSelect" aria-label="select year" v-model="userInfo.birthyear">
                       <option :value="item" v-for="(item, key) in years" :key="key">{{ item }}</option>
                     </select>
                   </div>
-                  <div class="col">
+                  <div class="col px-0">
                     <select class="form-select loginTextStyle loginFormSelect" aria-label="select month" v-model="userInfo.birthMon">
                       <option :value="item" v-for="(item, key) in months" :key="key">{{ item }}</option>
                     </select>
                   </div>
-                  <div class="col">
+                  <div class="col pe-0">
                     <select class="form-select loginTextStyle loginFormSelect" aria-label="select day" v-model="userInfo.birthDay">
                       <option :value="item" v-for="(item, key) in days" :key="key">{{ item }}</option>
                     </select>
@@ -78,17 +78,17 @@
                 </div>
                 <label for="inputaddress" class="mb-1">地址</label>
                 <div class="row gap-0 mx-0">
-                  <div class="col-6">
+                  <div class="col-6 ps-0">
                     <select class="form-select loginTextStyle loginFormSelect" aria-label="select month" v-model="userInfo.addressCity">
                       <option :value="item.city" v-for="(item, key) in citys" :key="key">{{ item.city }}</option>
                     </select>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 pe-0">
                     <select class="form-select loginTextStyle loginFormSelect" aria-label="select month" v-model="userInfo.addressLocal">
                       <option :value="item" v-for="(item,key) in citys[0].local" :key="key">{{ item }}</option>
                     </select>
                   </div>
-                  <div class="col-12 mt-3 ">
+                  <div class="col-12 mt-3 px-0">
                     <input type="text" class="form-control loginTextStyle loginFormInput" id="inputaddress" placeholder="請輸入詳細地址"
                     v-model="userInfo.addressDes"/>
                   </div>
