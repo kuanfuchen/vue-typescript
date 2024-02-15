@@ -45,7 +45,7 @@ import { RouterLink } from 'vue-router';
 import { ref,reactive } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import {data} from '../utils/utils';
-type UserLoginInfo = {
+interface UserLoginInfo {
   email:string,
   password:string,
 }
@@ -73,7 +73,12 @@ const loginedInfo = async() => {
     if(res.data.status){
       console.log(res)
       window.confirm('登入成功')
-      data.transferMegFinishMeg$(res.data);
+      const userData = {
+        name:res.data.result.name,
+        status:res.data.status,
+        token:res.data.token
+      }
+      data.transferMegFinishMeg$(userData);
     }
     console.log(res,'res')
   }).catch((err)=>{

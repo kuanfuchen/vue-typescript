@@ -11,9 +11,18 @@
           <li class="nav-item me-3" >
             <RouterLink class='nav-link navLinkTextStyle' to="/roomstyle" style="color:#fff" >客房旅宿</RouterLink>
           </li>
-          <li class="nav-item me-3" >
+          <li class="nav-item  dropdown me-3" >
             <RouterLink class='nav-link navLinkTextStyle' v-if="!loginPersonInfo.status" to="/login" style="color:#fff">會員登入</RouterLink>
-            <div v-else style="color:#fff" class="navLinkTextStyle">{{ loginPersonInfo.name }}</div>
+            <!-- <div v-else style="color:#fff" class="navLinkTextStyle">{{ loginPersonInfo.name }}</div> -->
+            <a v-else style="color:#fff;text-decoration: none;"  class="dropdown toggleSignout_W" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+              {{ loginPersonInfo.name }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg-end" v-if="loginPersonInfo.status">
+              <div  class="dropdown-item navLinkTextStyle signoutStyle" @click="removeUserInfo">登出</div>
+            </ul>
+          </li>
+          <li class="nav-item me-3 dorpdownSignout_M" v-if="loginPersonInfo.status">
+            <div style="color:#fff" class="navLinkTextStyle signoutStyle" @click="removeUserInfo">登出</div>
           </li>
         </ul>
       </div>
@@ -47,15 +56,17 @@
   data.transferMeg$.pipe(takeUntil(comSubject$)).subscribe((info:any)=>{
     console.log(info,'info')
     if(info.status){
-      loginPersonInfo.name = info.result.name;
+      // loginPersonInfo.name = info.result.name;
+      loginPersonInfo.name = info.name;
       loginPersonInfo.status = info.status;
       loginPersonInfo.token = info.token;
     }
   })
-  const removeInfo = () => {
+  const removeUserInfo = () => {
     loginPersonInfo.name = '';
     loginPersonInfo.status=false;
     loginPersonInfo.token = '';
+    data.transferMegFinishMeg$(loginPersonInfo)
   }
 </script>
 <style scope>
@@ -90,6 +101,15 @@
 .navbar-collapse .collapse .show{
   background-color: #000 !important;
 }
+.signoutStyle{
+  cursor: pointer;
+}
+.toggleSignout_W{
+  display: block;
+}
+.dorpdownSignout_M{
+  display: none;
+}
 @media(max-width:576px){
   .navbar .navBarContainer{
     padding-left: 12px;
@@ -100,7 +120,12 @@
     background: #000 !important;
     z-index: 100;
   }
-
+  .toggleSignout_W{
+   display: none;
+  }
+  .dorpdownSignout_M{
+   display:block;
+  }
 }
 
 </style>
