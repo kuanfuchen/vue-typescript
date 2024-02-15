@@ -120,7 +120,7 @@
   import Navbar from '../components/Navbar.vue';
   import axios from 'axios';
   import router from '@/router';
-  const stepper = ref('stepperTwo');
+  const stepper = ref('stepperOne');
   const years:number[] = reactive([]);
   const months:number[] = reactive([]);
   const days:number[] = reactive([]);
