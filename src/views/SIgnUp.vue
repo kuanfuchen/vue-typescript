@@ -1,11 +1,12 @@
 <template>
   <div class="bg-black">
     <Navbar />
-    <div class="d-flex loginStyle" >
+    <div class="d-flex signupStyle" >
       <div class="plotStyle"></div>
         <div class="d-flex justify-content-center align-items-center loginFormBlock">
+          <!--  -->
           <div class="loginBgImg"></div>
-            <div class='loginFormSzie'>
+            <div class='loginFormSize'>
               <div class='loginTextStyle loginSmallTitle mb-2 ' style="color:#BF9D7D">
                 <span>享樂酒店，誠摯歡迎</span> 
               </div>
@@ -46,7 +47,7 @@
                 @click="checkedSignUp()">下一步</button>
                 <!-- <span class="text-danger" v-if="signupwarning !==''">{{ signupwarning }}</span> -->
               </div>
-              <div class="mb-3" v-else-if="stepper=== 'stepperTwo'">
+              <div class="" v-else-if="stepper=== 'stepperTwo'">
                 <div class="mb-2">
                   <label for="name" class="form-label">姓名</label>
                   <input type="text" v-model="userInfo.name" class="form-control loginTextStyle loginFormInput" id="name" placeholder='請輸入姓名' />
@@ -58,7 +59,7 @@
                 <div class="mb-1">
                   <label>生日</label>
                 </div>
-                <div class="row gap-0 row-cols-3 mb-2">
+                <div class="row row-cols-3 mx-0 mb-2">
                   <div class="col">
                     <select class="form-select loginTextStyle loginFormSelect" aria-label="select year" v-model="userInfo.birthyear">
                       <option :value="item" v-for="(item, key) in years" :key="key">{{ item }}</option>
@@ -76,7 +77,7 @@
                   </div>
                 </div>
                 <label for="inputaddress" class="mb-1">地址</label>
-                <div class="row gap-0">
+                <div class="row gap-0 mx-0">
                   <div class="col-6">
                     <select class="form-select loginTextStyle loginFormSelect" aria-label="select month" v-model="userInfo.addressCity">
                       <option :value="item.city" v-for="(item, key) in citys" :key="key">{{ item.city }}</option>
@@ -92,14 +93,14 @@
                     v-model="userInfo.addressDes"/>
                   </div>
                 </div>
-                <input type="checkbox" class="form-check-input" id="checkedbox" v-model="userInfo.checkConsent" />
-                <label class="ms-2 form-check-label" for="checkedbox">我已閱讀並同意本網站個資使用規範</label>
+                <div class="mt-2 d-flex">
+                  <input type="checkbox" class="form-check-input" id="checkedbox" v-model="userInfo.checkConsent" />
+                  <label class="ms-2 form-check-label" for="checkedbox">我已閱讀並同意本網站個資使用規範</label>
+                </div>
                 <button type="submit" class=" mt-3 mb-1 form-control btn loginTextStyle loginFormInput loginFormButton"
                   @click="finishSignup()">
                   完成註冊
                 </button>
-                
-                
               </div>
               <p class="text-danger">{{ signupwarning }}</p>
               <div class="">
@@ -119,7 +120,7 @@
   import Navbar from '../components/Navbar.vue';
   import axios from 'axios';
   import router from '@/router';
-  const stepper = ref('stepperOne');
+  const stepper = ref('stepperTwo');
   const years:number[] = reactive([]);
   const months:number[] = reactive([]);
   const days:number[] = reactive([]);
@@ -238,9 +239,9 @@
     top: 50%;
     left: 0;
     right: 0;
-    height: 2px; /* 線的高度 */
-    background-color: #909090; /* 線的顏色 */
-    transform: translateY(-50%); /* 將線的中心點置中 */
+    height: 2px; 
+    background-color: #909090;
+    transform: translateY(-50%);
   }
   .stepBall{
     width: 32px;
@@ -251,7 +252,7 @@
     align-items: center;
 
   }
-  .loginStyle{
+  .signupStyle{
   background-color: #000;
   height: calc(100vh - 120px);
 }
@@ -268,8 +269,8 @@
   background-position: center;
   z-index: 10;
 }
-.loginFormSzie{
-  width:22vw
+.loginFormSize{
+  width:23vw
 }
 .loginTextStyle{
   font-family: 'Noto Serif TC';
@@ -312,18 +313,29 @@
   text-decoration: underline;
   cursor: pointer;
 }
+@media (max-width:1400px) {
+  .loginFormSize{
+    width: 35vw;
+  }
+  .line-container{
+    width:12vw
+  }
+}
 @media(max-width:576px){
   .plotStyle{
     display: none;
   }
-  .loginStyle{
+  .signupStyle{
     height:100vh
   }
   .loginFormBlock{
-    width:100vw
+    width:100vw;
   }
-  .loginFormSzie{
+  .loginFormSize{
     width:calc(100vw - 20px);
+  }
+  .line-container{
+    width:8vw
   }
 }
 </style>

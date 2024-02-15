@@ -143,21 +143,14 @@
       left: 50%;
       background-image: linear-i-gradient(to bottom, #BE9C7C, #ffffff);
     }
-    // .roomTextSize1-i{
-    //   font-size: 28px;
-    //   line-height: 34px;
-    // }
-    // .roomTextSize2-i{
-    //   font-size: 16px;
-    //   line-height: 24px;
-    // }
     .btn-indexUse-i{
       background-color:#ffffff;
       border: #ffffff;
       color: #000;
     }
     .linear-i{
-      color: #000;
+      background: #000;
+      height: 1.5px;
     }
     .indextextFlex-i{
       display: block;

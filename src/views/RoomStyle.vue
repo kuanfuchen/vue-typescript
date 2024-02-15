@@ -241,6 +241,12 @@
     .roomTextSize3{
       font-size: 12px;
     }
+    .roomdisplayInfo{
+      max-width:85vw;
+    }
+    .roomdisplayCardInfo{
+      width: 80vw;
+    }
   }
   @media(max-width:576px){
     .bannerBg{
