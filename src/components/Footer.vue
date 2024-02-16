@@ -10,7 +10,7 @@
             </div>
           </div>
           <div class="changeStyle aboutMobileInfoMt">
-            <div>
+            <div class="basicAboutInfoStyle">
               <div class="aboutInfoStyle">
                 <div class="copyrightText" >TEL</div>
                 <div  class=" copyrightText copyrightContent">+886-7-1234567</div>
@@ -71,6 +71,17 @@
 }
 .twoAboutInfoStyle{
   margin-left: 80px;
+}
+@media (max-width:992px) {
+  .insideFooter{
+    padding:50px 5vw 50px 5vw
+  }
+  .basicAboutInfoStyle{
+    margin-left: 10px;
+  }
+  .twoAboutInfoStyle{
+    margin-left: 20px;
+  }
 }
 @media(max-width:576px) {
   .aboutMobileInfoMt{

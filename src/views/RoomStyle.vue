@@ -17,15 +17,13 @@
         </div>
       </div>
     </div>
-    <div class="roomdisplayInfo mx-auto" >
+    <div class="roomdisplayInfo mx-auto "  >
       <div class="titleDistance">
         <div class="bannerTextStyle roomTextSize2">房型選擇</div>
         <div class="bannerTextStyle roomTitle roomTextSize1" >各種房型，任您挑選</div>
       </div>
       <div class="card roomdisplayCardInfo mx-auto mb-2" v-for="(items, key) in roomData" :key="key" >
-        <div class="g-0 roomFlexReg">
-          <!-- <div class=" "> -->
-            <!--  justify-content-center -->
+        <div class="g-0 roomFlexReg" >
             <div  :id="items.title" class="carousel slide d-flex justify-content-center" >
               <div class="carousel-inner">
                 <div class="displayRoomImg">
@@ -44,40 +42,37 @@
                 </button>
               </div>
             </div>
-          <!-- </div> -->
           <div style="min-width:27vw">
-          <div class="card-body my-auto">
-            <div class="mx-auto" style="height: 100%;">
-              <h5 class="bannerTextStyle roomTextSize1" >{{ items.title }}</h5>
-              <div class="roomTextSize3">{{ items.contentTitle }}</div>
-            </div>
-            <div class="roomInfoBtnStyle">
-              <button class="roomBtn roomTextSize3 mt-5 ">
-                <img class="ms-0" src="../assets/room/icon/ic_Size.png" alt="" srcset="">
-                <p class="mt-2">{{ items.size }}</p>
-              </button>
-              <button class="roomBtn roomTextSize3 ms-3 mt-5">
-                <img  src="../assets/room/icon/ic_Bed.png"  alt="" >
-                <p class="mt-2">{{ items.bed }}</p>
-              </button>
-              <button class="roomBtn roomTextSize3 ms-3 mt-5">
-                <img src="../assets/room/icon/ic_Person.png" alt="" >
-                <p class="mt-2">{{ items.person }}</p>
-              </button>
-            </div>
-            <div class="card_btn_underline pt-5">
-              <div class="card_btn_gradientLine"></div>
-            </div>
-            <div class="d-flex justify-content-between pt-5">
-              <div class="bannerTextStyle roomTitleSmall roomTitle">{{ items.price }}</div>
-              <button class="btn btn-arrow">
-                <img src="../assets/room/icon/ic_ArrowRight.png" alt="" srcset="">
-              </button>
+            <div class="card-body my-auto">
+              <div class="mx-auto" style="height: 100%;">
+                <h5 class="bannerTextStyle roomTextSize1" >{{ items.title }}</h5>
+                <div class="roomTextSize3">{{ items.contentTitle }}</div>
+              </div>
+              <div class="roomInfoBtnStyle">
+                <button class="roomBtn roomTextSize3 mt-5 ">
+                  <img class="ms-0" src="../assets/room/icon/ic_Size.png" alt="" srcset="">
+                  <p class="mt-2">{{ items.size }}</p>
+                </button>
+                <button class="roomBtn roomTextSize3 ms-3 mt-5">
+                  <img  src="../assets/room/icon/ic_Bed.png"  alt="" >
+                  <p class="mt-2">{{ items.bed }}</p>
+                </button>
+                <button class="roomBtn roomTextSize3 ms-3 mt-5">
+                  <img src="../assets/room/icon/ic_Person.png" alt="" >
+                  <p class="mt-2">{{ items.person }}</p>
+                </button>
+              </div>
+              <div class="card_btn_underline pt-5">
+                <div class="card_btn_gradientLine"></div>
+              </div>
+              <div class="d-flex justify-content-between pt-5">
+                <div class="bannerTextStyle roomTitleSmall roomTitle">{{ items.price }}</div>
+                <button class="btn btn-arrow">
+                  <img src="../assets/room/icon/ic_ArrowRight.png" alt="" srcset="">
+                </button>
+              </div>
             </div>
           </div>
-            
-          </div>
-          
         </div>
       </div>
     </div>
@@ -227,11 +222,13 @@
   }
   .roomFlexReg{
     display: flex;
+    width:41vw;
   }
   .img-style{
     border-radius: 20px 0  0 20px;
     max-width:41vw;
-    /* height: 480px; */
+    height: 480px;
+    object-fit: cover;
   }
   .roomInfoBtnStyle{
     display: flex;
@@ -287,7 +284,7 @@
   }
   .roomFlexReg{
     display:block;
-    /* width: 80vw; */
+    width: 100%;
   }
   .img-style{
     border-radius: 0;
