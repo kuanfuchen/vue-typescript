@@ -34,6 +34,8 @@
               <span>沒有會員嗎?</span>
                 <RouterLink to="/signup" class='ms-3 loginForgetPW loginTextStyle'>前往註冊</RouterLink>
             </div>
+            <button type="submit" class="mb-1 form-control btn loginTextStyle loginFormInput loginFormButton"
+            @click="google_Login()">Google登入</button>
           </div>
         </div>
       </div>
@@ -45,6 +47,9 @@ import { RouterLink } from 'vue-router';
 import { ref,reactive } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import {data} from '../utils/utils';
+import { googleTokenLogin } from 'vue3-google-login';
+const clientID = '';
+let clientIDdata:object = {}; 
 interface UserLoginInfo {
   email:string,
   password:string,
@@ -53,7 +58,19 @@ const loginUseInfo:UserLoginInfo = reactive({
   email:'',
   password:''
 });
-const signupwarning = ref('')
+const signupwarning = ref('');
+const google_Login = ():void => {
+  try{
+    googleTokenLogin({
+      clientId:clientID
+    }).then((response)=>{
+      clientIDdata = response;
+      console.log(clientIDdata, 'clientIDdata')
+    })
+  }catch(err){
+    console.log(err)
+  }
+}
 const loginedInfo = async() => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const checkedEmail = loginUseInfo.email.toLowerCase().match(emailRegex);
