@@ -48,7 +48,7 @@ import { ref,reactive } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import {data} from '../utils/utils';
 import { googleTokenLogin } from 'vue3-google-login';
-const clientID = '';
+const clientID = import.meta.env.Client_ID;
 let clientIDdata:object = {}; 
 interface UserLoginInfo {
   email:string,
@@ -61,12 +61,20 @@ const loginUseInfo:UserLoginInfo = reactive({
 const signupwarning = ref('');
 const google_Login = ():void => {
   try{
+    console.log(clientID)
     googleTokenLogin({
-      clientId:clientID
-    }).then((response)=>{
+      clientId:''
+    }).then(async(response)=>{
       clientIDdata = response;
       console.log(clientIDdata, 'clientIDdata')
+      await axios.post('http://localhost:3005/api/v1/user/login',{
+        email:'123@gmail.com',
+        password:'a1234567',
+        token:response.access_token
+      }).then(()=>{
+      })
     })
+    
   }catch(err){
     console.log(err)
   }
@@ -83,9 +91,11 @@ const loginedInfo = async() => {
     return
   }
   signupwarning.value = '';
+  
+    // 
   await axios.post('https://practice-ts-mongdb.onrender.com/api/v1/user/login',{
     email: loginUseInfo.email,
-    password: loginUseInfo.password
+    password: loginUseInfo.password,
   }).then((res)=>{
     if(res.data.status){
       console.log(res)
