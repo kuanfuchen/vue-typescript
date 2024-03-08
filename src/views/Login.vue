@@ -27,15 +27,24 @@
                 忘記密碼?
               </div> -->
             </div>
-            <button type="submit" class="mb-1 form-control btn loginTextStyle loginFormInput loginFormButton"
-            @click="loginedInfo()">會員登入</button>
+            <div class="row">
+              <div class="col-6">
+                <button type="submit" class="mb-1 form-control btn loginTextStyle loginFormInput loginFormButton "
+                @click="loginedInfo()">會員登入</button>
+              </div>
+              <div class="col-6">
+                <button type="submit" class="mb-1 form-control btn loginTextStyle   btn-primary login_google"
+                @click="google_Login()">Google登入</button>
+              </div>
+            </div>
+            
+            
             <p class="text-danger">{{ signupwarning }}</p>
             <div class="mt-1">
               <span>沒有會員嗎?</span>
                 <RouterLink to="/signup" class='ms-3 loginForgetPW loginTextStyle'>前往註冊</RouterLink>
             </div>
-            <button type="submit" class="mb-1 form-control btn loginTextStyle loginFormInput loginFormButton"
-            @click="google_Login()">Google登入</button>
+           
           </div>
         </div>
       </div>
@@ -48,7 +57,7 @@ import { ref,reactive } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import {data} from '../utils/utils';
 import { googleTokenLogin } from 'vue3-google-login';
-const clientID = import.meta.env.Client_ID;
+const clientID = import.meta.env.VUE_APP_CLIENT_ID;
 let clientIDdata:object = {}; 
 interface UserLoginInfo {
   email:string,
@@ -59,21 +68,21 @@ const loginUseInfo:UserLoginInfo = reactive({
   password:''
 });
 const signupwarning = ref('');
-const google_Login = async():void => {
+const google_Login = async() => {
   try{
-    // console.log(clientID)
+    console.log(clientID)
     
     googleTokenLogin({
       clientId:''
     }).then(async(response)=>{
       clientIDdata = response;
       console.log(clientIDdata, 'clientIDdata')
-      await axios.post('http://localhost:3005/api/v1/user/login',{
-        email:'123@gmail.com',
-        password:'a1234567',
+      await axios.post('http://localhost:3005/api/v1/user/googleLogin',{
+        // email:'123@gmail.com',
+        // password:'a1234567',
         token:response.access_token
       }).then((res)=>{
-        console.log(res)
+        console.log(res, 'rers123354')
       })
     })
     
@@ -157,6 +166,14 @@ const loginedInfo = async() => {
 .loginFormInput{
   background:#ECECEC !important;
   color: #909090 !important;
+  height: 56px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  padding:16px, 32px, 16px, 32px;
+  border-radius: 8px;
+}
+.login_google{
   height: 56px;
   font-size: 16px;
   line-height: 24px;
