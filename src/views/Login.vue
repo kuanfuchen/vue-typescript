@@ -59,9 +59,10 @@ const loginUseInfo:UserLoginInfo = reactive({
   password:''
 });
 const signupwarning = ref('');
-const google_Login = ():void => {
+const google_Login = async():void => {
   try{
-    console.log(clientID)
+    // console.log(clientID)
+    
     googleTokenLogin({
       clientId:''
     }).then(async(response)=>{
@@ -71,7 +72,8 @@ const google_Login = ():void => {
         email:'123@gmail.com',
         password:'a1234567',
         token:response.access_token
-      }).then(()=>{
+      }).then((res)=>{
+        console.log(res)
       })
     })
     
