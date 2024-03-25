@@ -44,7 +44,6 @@
               <span>沒有會員嗎?</span>
                 <RouterLink to="/signup" class='ms-3 loginForgetPW loginTextStyle'>前往註冊</RouterLink>
             </div>
-           
           </div>
         </div>
       </div>
@@ -57,7 +56,7 @@ import { ref,reactive } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import {data} from '../utils/utils';
 import { googleTokenLogin } from 'vue3-google-login';
-const clientID = import.meta.env.VUE_APP_CLIENT_ID;
+
 let clientIDdata:object = {}; 
 interface UserLoginInfo {
   email:string,
@@ -70,19 +69,16 @@ const loginUseInfo:UserLoginInfo = reactive({
 const signupwarning = ref('');
 const google_Login = async() => {
   try{
-    console.log(clientID)
-    
     googleTokenLogin({
-      clientId:''
+      clientId:import.meta.env.VITE_APP_CLIENT_ID,
     }).then(async(response)=>{
       clientIDdata = response;
       console.log(clientIDdata, 'clientIDdata')
-      await axios.post('http://localhost:3005/api/v1/user/googleLogin',{
-        // email:'123@gmail.com',
-        // password:'a1234567',
+      // http://localhost:3005/api/v1/user/googleLogin
+      await axios.post('https://practice-ts-mongdb.onrender.com/api/v1/user/googleLogin',{
         token:response.access_token
       }).then((res)=>{
-        console.log(res, 'rers123354')
+        console.log(res, 'mongoDB')
       })
     })
     
