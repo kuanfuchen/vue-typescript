@@ -18,7 +18,7 @@ export default defineConfig({
     port:3000,
     proxy:{
       '/api':{
-        target: 'https://vue-hotel.onrender.com',
+        target: 'https://vuetshotel.onrender.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
