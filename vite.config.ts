@@ -8,21 +8,11 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base: process.env.NODE_ENV === 'production' ? '/vue-typescript/' : '/',
+  base: 'https://vuehotel-ts.onrender.com' || '/',
+  // process.env.NODE_ENV === 'production' ? '/vue-typescript/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  server:{
-    port:3000,
-    proxy:{
-      '/api':{
-        target: 'https://vuetshotel.onrender.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
-    
-  }
 })
