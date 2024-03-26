@@ -8,7 +8,8 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base: process.env.NODE_ENV === 'production' ? '/vue-typescript/' : '/',
+  base: './',
+  // process.env.NODE_ENV === 'production' ? '/vue-typescript/' : '/'
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
