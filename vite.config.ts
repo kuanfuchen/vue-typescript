@@ -8,8 +8,8 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base: 'https://vuehotel-ts.onrender.com' || '/',
-  // process.env.NODE_ENV === 'production' ? '/vue-typescript/' : '/',
+  base: './',
+  // process.env.NODE_ENV === 'production' ? '/vue-typescript/' : '/'  'https://vuehotel-ts.onrender.com',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
